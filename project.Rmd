@@ -1,0 +1,57 @@
+---
+title: "INFO550 hw3"
+author: "Feifei Geng"
+date: "9/20/2020"
+output: pdf_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE,  warning = FALSE,  message = FALSE)
+```
+
+It was known that in many mammalian genomes, including human, C and G bases are underrepresented and the occurrences of CG dinucleotide (where C and G are at consecutive bases) are depleted. One explanation for the phenomena is DNA methylation. When C and G appear at consecutive bases, C tend to be methylated and the methylated C resembles T in its chemical structure so it’s very easily to be mutated to T. Over generations, the methylationmutation process accumulates, and CG’s in many unimportant positions are turned into TG’s. The rest of the CGs tends to cluster in small regions called “CpG islands” (CGIs).  
+
+Firstly we will examine the sequence composition of human genome. 
+```{r}
+library(knitr)
+library(BSgenome)
+library(BSgenome.Hsapiens.UCSC.hg19)
+chroms<-c(paste0("chr",1:22),"chrX","chrY")
+cgratio=rep(NA,length(chroms))
+for (i in seq(length(chroms)))
+{
+  Seq=Hsapiens[[chroms[i]]]
+  bases=alphabetFrequency(Seq,baseOnly=TRUE)
+  ntotBases=sum(bases[1:4])
+  baseFreq=bases[1:4]/ntotBases
+  GCcontent=baseFreq["C"]+baseFreq["G"]
+  cg=matchPattern("CG", Seq)
+  ncg=length(cg)
+  cgratio[i]=ncg/(baseFreq["C"]*baseFreq["G"]*ntotBases)
+}
+output1=data.frame(chromosome=chroms,ratio=cgratio)
+kable(output1,caption="observed to expected CG ratio")
+```
+
+```{r}
+library(AnnotationDbi)
+library(GenomicRanges)
+library(knitr)
+txdb = loadDb("hg19_knownGenes.sqlite")
+genes.hg19 = genes(txdb)
+tss=start(genes.hg19)
+idx=which(strand(genes.hg19)=="-")
+tss[idx]=end(genes.hg19)[idx]
+allchrs = as.character(seqnames(genes.hg19))
+idx=c(grep("random", allchrs),grep("hap", allchrs))
+TSS=GRanges(seqnames=Rle(allchrs[-idx]), ranges=IRanges(tss[-idx]-500,tss[-idx]+500))
+hg19_CGI <- read.delim("hg19_CGI.txt")
+CGI=GRanges(seqnames=Rle(hg19_CGI$chrom), ranges=IRanges(hg19_CGI$chromStart,hg19_CGI$chromEnd))
+ratio=round(sum(TSS %over% CGI) / length(TSS) *100,3)
+```
+
+We'll also check the overlaps of CpG island and TSS. The percentage of TSS covered by CGI is `r ratio`.
+
+- Max Spiewak: 2
+- Patrick Zhang: 2
+- Phong Le: 2
