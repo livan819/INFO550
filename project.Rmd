@@ -1,7 +1,9 @@
+#!/usr/bin/env Rscript
+
 ---
-title: "INFO550 hw3"
+title: "INFO550 project"
 author: "Feifei Geng"
-date: "9/20/2020"
+date: "9/28/2020"
 output: pdf_document
 ---
 
@@ -51,7 +53,3 @@ ratio=round(sum(TSS %over% CGI) / length(TSS) *100,3)
 ```
 
 We'll also check the overlaps of CpG island and TSS. The percentage of TSS covered by CGI is `r ratio`.
-
-- Max Spiewak: 2
-- Patrick Zhang: 2
-- Phong Le: 2
