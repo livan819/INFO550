@@ -31,4 +31,4 @@ To execute the analysis, from the project folder you can run
 Rscript -e "rmarkdown::render('project.Rmd')"
 ```
 
-This will create a file called `project.html` output in your directory that contains the results.
+This will create a file called `project.pdf` output in your directory that contains the results.
