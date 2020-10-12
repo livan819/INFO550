@@ -16,7 +16,7 @@ for(p in pkgs1){
     }
 }
 pkgs2 <- c("BSgenome","BSgenome.Hsapiens.UCSC.hg19","AnnotationDbi","GenomicRanges")
-for(p in pkgs1){
+for(p in pkgs2){
 	if(!(p %in% install_pkgs)){
 		BiocManager::install(p)
 	}
