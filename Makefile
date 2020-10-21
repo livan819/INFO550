@@ -6,7 +6,7 @@ report.html: data/wholegenome.RData data/hg19_CGI.txt figs/fig1.png figs/fig2.pn
 data/wholegenome.RData: R/wholegenome.R
 	chmod +x R/wholegenome.R && \
 	Rscript R/wholegenome.R
-data/TSS.RData: data/hg19_knownGenes.sqlite R/TSS.R
+data/TSS.RData: rawdata/hg19_knownGenes.sqlite R/TSS.R
 	chmod +x R/TSS.R && \
 	Rscript R/TSS.R
 	
