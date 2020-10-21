@@ -15,25 +15,18 @@ This will create a file called `project.html` output in your directory that cont
 
 ## File structure
 
-rawdata/  
-
-	data/hg19_CGI.txt  
-	
-	data/hg19_knownGenes.sqlite  
-	
-R/  
-
-	R/packages.R  
-	
-	R/make_fig1.R
-	
-	R/make_fig2.R
-	
-	R/report.Rmd
-data/	
-
-figs/
-
-Makefile
-
-README.md
+INFO550/ <br>
+&nbsp;&nbsp;&nbsp; raw_data/ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rawdata/hg19_CGI.txt <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rawdata/hg19_knownGenes.sqlite <br>
+&nbsp;&nbsp;&nbsp; data/ <br>
+&nbsp;&nbsp;&nbsp; R/ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R/packages.R  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R/wholegenome.R <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R/TSS.R <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R/make_fig1.R <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R/make_fig2.R <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R/report.Rmd <br>
+&nbsp;&nbsp;&nbsp; figs/ <br>
+&nbsp;&nbsp;&nbsp; Makefile <br>
+&nbsp;&nbsp;&nbsp; README.md
