@@ -35,7 +35,7 @@ The transcription start site (TSS) is the location where transcription starts at
 ```{r}
 library(GenomicRanges)
 load("../data/TSS.RData")
-hg19_CGI <- read.delim("../data/hg19_CGI.txt")
+hg19_CGI <- read.delim("../rawdata/hg19_CGI.txt")
 CGI=GRanges(seqnames=Rle(hg19_CGI$chrom), ranges=IRanges(hg19_CGI$chromStart,hg19_CGI$chromEnd))
 ratio=round(sum(TSS %over% CGI) / length(TSS) *100,2)
 ```
