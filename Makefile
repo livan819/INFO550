@@ -1,5 +1,5 @@
 # rule for making report  
-report.html: data/wholegenome.RData data/hg19_CGI.txt figs/fig1.png figs/fig2.png R/report.Rmd
+report.html: data/wholegenome.RData rawdata/hg19_CGI.txt figs/fig1.png figs/fig2.png R/report.Rmd
 	Rscript -e "rmarkdown::render('R/report.Rmd', quiet = TRUE,output_file ='../report.html')"
 
 # rule for analysis of human sequence compositions 
