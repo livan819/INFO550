@@ -30,3 +30,8 @@ help:
 	@echo "wholegenome.RData: analysis of CG content in whole human genome."
 	@echo "TSS.RData   : analysis of CG content in transcriptional starting site."
 	@echo "install     : install required R packages."
+
+# build docker image
+.PHONY: build
+build:
+	docker build -t info550proj . 
