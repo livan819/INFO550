@@ -1,7 +1,7 @@
 .PHONY: report
 # rule for making report  
 report: R/report.Rmd data/wholegenome.RData rawdata/hg19_CGI.txt figs/fig1.png figs/fig2.png 
-	Rscript -e "rmarkdown::render('R/report.Rmd', quiet = TRUE,output_file ='../report.html')"
+	Rscript -e "rmarkdown::render('R/report.Rmd', quiet = TRUE,output_file ='../output/report.html')"
 
 # rule for analysis of human sequence compositions 
 data/wholegenome.RData: R/wholegenome.R
