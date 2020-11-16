@@ -1,12 +1,13 @@
+.PHONY: report
 # rule for making report  
-report.html: data/wholegenome.RData data/hg19_CGI.txt figs/fig1.png figs/fig2.png R/report.Rmd
+report: R/report.Rmd data/wholegenome.RData rawdata/hg19_CGI.txt figs/fig1.png figs/fig2.png 
 	Rscript -e "rmarkdown::render('R/report.Rmd', quiet = TRUE,output_file ='../report.html')"
 
 # rule for analysis of human sequence compositions 
 data/wholegenome.RData: R/wholegenome.R
 	chmod +x R/wholegenome.R && \
 	Rscript R/wholegenome.R
-data/TSS.RData: data/hg19_knownGenes.sqlite R/TSS.R
+data/TSS.RData: rawdata/hg19_knownGenes.sqlite R/TSS.R
 	chmod +x R/TSS.R && \
 	Rscript R/TSS.R
 	
