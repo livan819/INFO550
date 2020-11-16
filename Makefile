@@ -24,14 +24,17 @@ figs/fig2.png: R/make_fig2.R data/wholegenome.RData data/TSS.RData
 install:
 	Rscript R/packages.R
 
-.PHONY: help
-help: 
-	@echo "report.html : Generate final analysis report."
-	@echo "wholegenome.RData: analysis of CG content in whole human genome."
-	@echo "TSS.RData   : analysis of CG content in transcriptional starting site."
-	@echo "install     : install required R packages."
-
 # build docker image
 .PHONY: build
 build:
 	docker build -t info550proj . 
+
+.PHONY: help
+help: 
+	@echo "report	   : Generate final analysis report."
+	@echo "wholegenome.RData: analysis of CG content in whole human genome."
+	@echo "TSS.RData   : analysis of CG content in transcriptional starting site."
+	@echo "install     : install required R packages."
+	@echo "build       : build docker image."
+
+
